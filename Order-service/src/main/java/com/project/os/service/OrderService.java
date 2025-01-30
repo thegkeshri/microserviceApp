@@ -1,11 +1,14 @@
 package com.project.os.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.project.os.common.OrderRequestDTO;
 import com.project.os.common.Payment;
+import com.project.os.entity.Order;
 import com.project.os.repository.OrderRepo;
 
 @Service
@@ -27,5 +30,11 @@ public class OrderService {
 		orderReq.setMessage(message);
 		orderRepo.save(orderReq.getOrder());
 		 return new OrderRequestDTO(orderReq.getOrder(),paymentresponse, message);
+	}
+	
+	public List<Order> getOrders() {
+		
+		List<Order> resp= orderRepo.findAll();
+		return resp;
 	}
 }

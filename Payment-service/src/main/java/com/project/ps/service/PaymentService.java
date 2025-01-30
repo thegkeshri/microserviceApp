@@ -1,5 +1,6 @@
 package com.project.ps.service;
 
+import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
@@ -25,5 +26,10 @@ public class PaymentService {
 	public String paymentStatus() {	
 		//this response should come from 3rd party app like paypal, paytm, etc...
 		return new Random().nextBoolean()?"SUCCESS":"FALSE";
+	}
+	
+	public List<Payment> getPaymentHistory() {
+		
+		return paymentrepo.findAll();
 	}
 }
